@@ -51,9 +51,9 @@ if($login == "" && $opis == ""){
             foreach($cdir as $file)
 				if($file == $data)
 					$data = $data.substr(uniqid(),0, -11);
-		$target_file = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/file1";
-		$target_file_ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/file2";
-		$target_file__ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/file3";
+		$target_file = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."0".".fil";
+		$target_file_ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."1".".fil";
+		$target_file__ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."2".".fil";
 		move_uploaded_file($_FILES["file1"]["tmp_name"], $target_file);
 		move_uploaded_file($_FILES["file2"]["tmp_name"], $target_file_);
 		move_uploaded_file($_FILES["file3"]["tmp_name"], $target_file__);

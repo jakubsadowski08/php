@@ -18,12 +18,12 @@ echo "<br/>Wpis:<br/>";
 echo $wpis['data']."   ".$wpis['kto_dodal'];
 echo $wpis['tresc'];
 
-$lista = scandir("blogi/".$_GET['blog']."/".$wpis['nazwa'].".k");
+$lista = scandir("blogi/".$_GET['blog']."/".$wpis['nazwa']);
     
 $indeks = 0;
 foreach($lista as $key=>$value){
     if($key > 1){
-        $file = file("blogi/".$_GET['blog']."/".$wpis['nazwa'].".k/$value");
+        $file = file("blogi/".$_GET['blog']."/".$wpis['nazwa']."/$value");
         $komentarz[$indeks]['rodzaj'] = trim($file[0]);
         $komentarz[$indeks]['data'] = trim($file[1]);
         $komentarz[$indeks]['autor'] = trim($file[2]);
