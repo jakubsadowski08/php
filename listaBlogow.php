@@ -7,7 +7,7 @@ $lista = scandir("blogi/");
 $indeks = 0;
 foreach($lista as $key=>$value){
     if($key > 1){
-        $file = file("blogi/$value/info");
+        $file = file("blogi/$value/info.txt");
         $blog[$indeks]['nazwa'] = $value;
         $blog[$indeks++]['owner'] = trim($file[0]);
     }

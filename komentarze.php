@@ -3,7 +3,7 @@ include('wstep.php');
 echo '<h1>Komentarze</h1>';
 include("menu.php");
 
-$file = file("blogi/".$_GET['blog']."/info");
+$file = file("blogi/".$_GET['blog']."/info.txt");
 $owner = trim($file[0]);    
 $plikKomentowany = file("blogi/".$_GET['blog']."/".$_GET['wpis'].".w");
 $wpis['nazwa'] = $_GET['wpis'];
@@ -18,12 +18,12 @@ echo "<br/>Wpis:<br/>";
 echo $wpis['data']."   ".$wpis['kto_dodal'];
 echo $wpis['tresc'];
 
-$lista = scandir("blogi/".$_GET['blog']."/".$wpis['nazwa']);
+$lista = scandir("blogi/".$_GET['blog']."/".$wpis['nazwa'].".k");
     
 $indeks = 0;
 foreach($lista as $key=>$value){
     if($key > 1){
-        $file = file("blogi/".$_GET['blog']."/".$wpis['nazwa']."/$value");
+        $file = file("blogi/".$_GET['blog']."/".$wpis['nazwa'].".k/$value");
         $komentarz[$indeks]['rodzaj'] = trim($file[0]);
         $komentarz[$indeks]['data'] = trim($file[1]);
         $komentarz[$indeks]['autor'] = trim($file[2]);

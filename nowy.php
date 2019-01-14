@@ -3,7 +3,6 @@ include('wstep.php');
 echo '<h1>Zakładanie nowego bloga</h1>';
 include("menu.php");
 
-
 if(!isset($_POST['zapisz'])){
     echo '<br/>
         <form action="" method="post">
@@ -24,19 +23,12 @@ if(!isset($_POST['zapisz'])){
 	$haslo = $_POST["haslo"];
     $opis  = $_POST['opis'];    
     $loginIstnieje = false;
-    
-	$lista = scandir("blogi/");
-	$indeks = 0;
-	foreach($lista as $key=>$value){
-		if($key > 1){
-			$file = file("blogi/$value/info");
-			if(trim($file[0]) == $login)
-			{
-				$loginIstnieje = true;
-			}
-			
-		}
-	}
+        
+    foreach(file("users.txt") as $key=>$value){
+        if(trim($value) == $login)
+            $loginIstnieje = true;
+    }
+        
     if($nazwa != "" && $login != "" && $haslo != "" && !$loginIstnieje){
         if(!is_dir("blogi"))
             mkdir("blogi");
@@ -46,11 +38,12 @@ if(!isset($_POST['zapisz'])){
             if(mkdir("blogi/$nazwa"))
                 echo "Blog ".$nazwa." założony pomyślnie!";
                     
-            $infoFile = fopen("blogi/$nazwa/info", "w");
+            $infoFile = fopen("blogi/$nazwa/info.txt", "w");
+            $usersFile = fopen("users.txt", "a");  
             fwrite($infoFile,$login."\r\n");
             fwrite($infoFile,md5($haslo)."\r\n");
             fwrite($infoFile,$opis);
-            //fwrite($usersFile,$login."\r\n");
+            fwrite($usersFile,$login."\r\n");
             
         }else
             echo "Blog ".$nazwa." już istnieje";

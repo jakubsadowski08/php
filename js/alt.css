@@ -1,0 +1,105 @@
+body {
+	font-family: Tahoma;
+}
+h1{
+	color :blue;
+	letter-spacing: 1mm;
+}
+h2{
+	color:green;
+}
+h3{
+	color:red;
+}
+h4{
+	color:pink;
+}
+p {
+	text-indent: 4px
+}
+col {
+	background-color:yellow;
+}
+#tabela {
+   border: 1px solid black;
+   border-color: red;
+   background-color: #ffc;
+   
+}
+	
+#tabela thead {
+	color:green;
+	text-transform:uppercase;
+}
+#tabela tbody {
+	text-transform:none;
+}
+#tabela td {
+   border: 1px solid black;
+   border-color: red;
+   
+   padding: 5px;
+}
+#lista {
+	list-style-type:upper-roman;
+}
+#lista ul {
+	list-style-type:lower-roman;
+}
+#lista ul ol{
+	list-style-type:lower-greek;
+}
+#obraz_1 {
+	display: inline;
+	float: right;
+    width: 200px;
+    height: 200px;
+	
+}
+#obraz_2 {
+	display: inline;
+	float: left;
+    width: 200px;
+    height: 200px;
+}
+
+div.tresc {
+	
+	max-width: 960px;
+	top:200px;
+	background-color: coral;
+}
+div.spis{
+	display:block;
+	position:absolute;
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+div.spis li:hover
+{
+    background-color:yellow;
+}
+div.spis li{
+	float:left;
+	widtg:100px;
+	
+	
+}
+#tytul{
+	clear:both;
+	margin-left:auto;
+	color:red;
+	background-color:yellow;
+	margin-right:auto;
+	text-align:center;
+	font-size:45px;
+}
+p::first-letter {
+    font-size: 200%;
+    color: white;
+}
+
+
+
+	

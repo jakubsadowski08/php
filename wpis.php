@@ -10,16 +10,16 @@ $lista = scandir("blogi/");
 $nazwaBloga = "";
 
 for($i=2;$i<count($lista);$i++){
-    if(trim(file("blogi/".$lista[$i]."/info")[0]) == $login){
+    if(trim(file("blogi/".$lista[$i]."/info.txt")[0]) == $login){
         $nazwaBloga = $lista[$i];
-        $haslo = trim(file("blogi/".$lista[$i]."/info")[1]);
+        $haslo = trim(file("blogi/".$lista[$i]."/info.txt")[1]);
     }
 }
 
 if($login == "" && $opis == ""){
     
 	echo "<br/>
-        <form action='' method='post'  enctype='multipart/form-data'>
+        <form action='' method='post'>
         <br>
         Login<input name='login'/>
         <br>
@@ -31,11 +31,11 @@ if($login == "" && $opis == ""){
         <br>
         Tresc wpisu<textarea name='opis'/></textarea>
 		<br>
-        <input type='file' name='file1' />
+        <input type='checkbox' name='sendFile1'><input type='file' name='file1'/>
 		<br>
-        <input type='file' name='file2' />
+        <input type='checkbox' name='sendFile2'><input type='file' name='file2'/>
 		<br>
-        <input type='file' name='file3' />
+        <input type='checkbox' name='sendFile3'><input type='file' name='file3'/>
 		<br>
         <input type='submit' name='zapisz' value='zapisz'>
         <input type='reset' value='Wyczyść''/>
@@ -45,20 +45,19 @@ if($login == "" && $opis == ""){
     if($podaneHaslo == $haslo){
         if(strlen($_POST['opis']) > 0){
             $opis = $_POST['opis'];
-            $data = substr($_POST['data'],0,4).substr($_POST['data'],5,2).substr($_POST['data'],8,2).substr($_POST['godzina'],0,2).substr($_POST['godzina'],3,2).date('s');
+            $data = substr($_POST['data'],0,4).substr($_POST['data'],5,2).substr($_POST['data'],8,2).substr($_POST['godzina'],0,2).substr($_POST['godzina'],3,2).date('s')."00";
+            
             $directory = "blogi/".$nazwaBloga."/";
-			$cdir = scandir($directory); 
-            foreach($cdir as $file)
-				if($file == $data)
-					$data = $data.substr(uniqid(),0, -11);
-		$target_file = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."0".".fil";
-		$target_file_ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."1".".fil";
-		$target_file__ = "/home/eaiibgrp/jsadows/public_html/php/blogi/".$nazwaBloga."/".$data."2".".fil";
-		move_uploaded_file($_FILES["file1"]["tmp_name"], $target_file);
-		move_uploaded_file($_FILES["file2"]["tmp_name"], $target_file_);
-		move_uploaded_file($_FILES["file3"]["tmp_name"], $target_file__);
+            $filecount = 0;
+            $files = glob($directory . "*.w");
+            if ($files){
+                $filecount = count($files);
+            }
+            $data += $filecount;
+                        
             $file = fopen("blogi/".$nazwaBloga."/$data.w", "w");
             fwrite($file,$opis."\r\n");
+                        
             echo "Wpis dodano pomyślnie";
                 
         }else{

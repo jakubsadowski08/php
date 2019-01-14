@@ -1,0 +1,81 @@
+body {
+	font-family: Tahoma;
+}
+h1{
+	color :black;
+	letter-spacing: 1mm;
+}
+h2{
+	color:black;
+}
+h3{
+	color:black;
+}
+h4{
+	color:black;
+}
+p {
+	text-indent: 4px
+}
+col {
+	background-color:black;
+}
+#tabela {
+   border: 1px solid black;
+   border-color: red;
+   background-color: #ffc;
+   
+}
+	
+#tabela thead {
+	color:black;
+	text-transform:uppercase;
+}
+#tabela tbody {
+	text-transform:none;
+}
+#tabela td {
+   border: 1px solid black;
+   border-color: red;
+   
+   padding: 5px;
+}
+#lista {
+	list-style-type:upper-roman;
+}
+#lista ul {
+	list-style-type:lower-roman;
+}
+#lista ul ol{
+	list-style-type:lower-greek;
+}
+#obraz_1 {
+	display: inline;
+	float: right;
+    width: 200px;
+    height: 200px;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+#obraz_2 {
+	display: inline;
+	float: left;
+    width: 200px;
+    height: 200px;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+div.spis{
+	display: none;
+}
+
+
+
+	

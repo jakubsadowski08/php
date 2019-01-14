@@ -22,13 +22,13 @@ if($_POST['opis'] == ""){
     $rodzaj_komentarza = $_POST['rodzaj'];
     $opis = $_POST['opis'];
     
-    if(!is_dir("blogi/".$_GET['blog']."/".$_GET['wpis']))
-        mkdir("blogi/".$_GET['blog']."/".$_GET['wpis']);
+    if(!is_dir("blogi/".$_GET['blog']."/".$_GET['wpis'].".k"))
+        mkdir("blogi/".$_GET['blog']."/".$_GET['wpis'].".k");
     
-    $list = scandir("blogi/".$_GET['blog']."/".$_GET['wpis']);
+    $list = scandir("blogi/".$_GET['blog']."/".$_GET['wpis'].".k");
     $numer = count($list) - 2;
     
-    $file = fopen("blogi/".$_GET['blog']."/".$_GET['wpis']."/$numer", "w");
+    $file = fopen("blogi/".$_GET['blog']."/".$_GET['wpis'].".k/$numer.txt", "w");
     
     fwrite($file,$rodzaj_komentarza."\r\n");
     fwrite($file,date('Y-m-d H:i:s')."\r\n");
