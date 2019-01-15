@@ -31,10 +31,8 @@ set_time_limit(3); // ustaw czas oczekiwania
 
 		}
 
-		// to clear cache
-		clearstatcache();
+		clearstatcache(); //czysci status piku
 
-		// to sleep
 		sleep(1);
 		
 	}
