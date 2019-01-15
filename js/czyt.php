@@ -21,12 +21,9 @@ set_time_limit(3); // ustaw czas oczekiwania
 		if ($fileModifyTime === false) {
 			throw new Exception('Could not read last modification time');
 		}
-
-		// if the last modification time of the file is greater than the last update sent to the browser... 
 		if ($fileModifyTime > $lastUpdate) {
 			setcookie('lastUpdate', $fileModifyTime);
 
-			// get file contents
 			$fileRead = file_get_contents($file);
 
 			exit(json_encode([
