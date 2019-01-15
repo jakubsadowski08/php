@@ -18,16 +18,28 @@ for($i=2;$i<count($lista);$i++){
 
 if($login == "" && $opis == ""){
     
-	echo "<br/>
+	echo "<script>
+	var x = document.getElementById("data");
+	var y = document.getElementById("godzina");
+	if(x.getMonth() >12 || x.getYear() <0 || x.getDate() > 31 || x.getDate()<0 || y.getMinutes() > 60 || y.getHours() > 24 || y.getHours() < 0)  
+	{
+		var x = new Date();
+		var d = new Date();
+		d.setHours(getHours(), getMinutes());
+		document.getElementById("data") = x.yyyymmdd();;
+		document.getElementById("godzina") = d;
+	
+	</script>
+	<br/>
         <form action='' method='post'>
         <br>
         Login<input name='login'/>
         <br>
         Hasło<input type='password' name='haslo'/>
         <br>
-        Data<input type='date' readonly value=".date('Y-m-d')." name='data'/>
+        Data<input type='date' readonly value=".date('Y-m-d')." name='data' id='data'/>
         <br>
-        Godzina<input type='time' readonly name='godzina' value=".date('H:i').">
+        Godzina<input type='time' readonly name='godzina' value=".date('H:i')." id ='godzina'>
         <br>
         Tresc wpisu<textarea name='opis'/></textarea>
 		<br>
