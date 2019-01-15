@@ -25,9 +25,9 @@ if($login == "" && $opis == ""){
         <br>
         Hasło<input type='password' name='haslo'/>
         <br>
-        Data<input type='text' readonly value=".date('Y-m-d')." name='data'/>
+        Data<input type='date' readonly value=".date('Y-m-d')." name='data'/>
         <br>
-        Godzina<input type='text' readonly name='godzina' value=".date('H:i').">
+        Godzina<input type='time' readonly name='godzina' value=".date('H:i').">
         <br>
         Tresc wpisu<textarea name='opis'/></textarea>
 		<br>
