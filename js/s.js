@@ -1,15 +1,35 @@
 read = false;
-function loadDoc() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("chatwindow").value =
-                this.responseText;
-        }
-    };
-    xhttp.open("GET", "chat.txt", true);
-    xhttp.send();
-}
+function poll() {
+		var http = new XMLHttpRequest();
+		http.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				if (this.status === 200) {
+					try {
+						var json = JSON.parse(this.responseText);
+					} catch {
+						poll();return;
+					}
+					
+
+					if (json.status !== true) {
+						alert(json.error);return;
+					}
+
+					document.getElementById("chatwindow").value = json.content;
+
+
+					poll();
+				} else {
+					poll();
+				}
+
+			}
+		}
+		http.open('GET', 'czyt.php', true);
+		http.send();
+
+
+	}
 function myFunction() {
     var checkBox = document.getElementById("myCheck");
     if (checkBox.checked == true){
@@ -24,11 +44,6 @@ function myFunction() {
         chatmsg.style.display = "none";
         bt.style.display = "none";
     }
-}
-function Reading(){
-    loadDoc()
-
-    setTimeout(Reading, 1000);
 }
 function submit_msg(){
     if (chatnick.value == "")
@@ -58,5 +73,5 @@ function writing(url)
 
 if(read = true)
 {
-    Reading();
+    poll();
 }
