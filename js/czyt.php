@@ -18,9 +18,6 @@ set_time_limit(3); // ustaw czas oczekiwania
 
 		$fileModifyTime = filemtime($file);
 
-		if ($fileModifyTime === false) {
-			throw new Exception('Could not read last modification time');
-		}
 		if ($fileModifyTime > $lastUpdate) {
 			setcookie('lastUpdate', $fileModifyTime);
 
